@@ -50,7 +50,7 @@ const food_data = [
       amount:'ea'
     },{
       id:7,
-      name:'Curious Kiwi',
+      name:'Curious Kiwis',
       imageUrl:'https://i5.walmartimages.com/asr/ea2f1505-0449-4d67-b4b4-d64294748ab5_2.ccee6b1b5876b8a7d2ef2395829076ad.jpeg?odnHeight=150&odnWidth=150&odnBg=ffffff',
       price:'$0.38',
       amount:'ea'
