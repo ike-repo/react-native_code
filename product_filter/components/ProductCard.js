@@ -1,18 +1,19 @@
 import React from 'react'
 import { StyleSheet, View, Dimensions, Image, Text} from 'react-native';
 
-// {product.inStock ? undefined : "Sold Out"}
 
 const ProductCard = ({product}) =>{
     return(
         <View style={styles.container}>
             <Image
-            source = {{uri: product.imgURL}}
-            style={styles.image}/>
+                source = {{uri: product.imgURL}}
+                style={styles.image}/>
             <View style={styles.label}>
                 <Text>{product.title}</Text>
-    <Text style={[styles.price, {color: product.inStock ? 'black' : 'red'}]}>{product.inStock ? product.price : "SOLD OUT" }</Text>
-  
+                <Text 
+                    style={[styles.price, {color: product.inStock ? 'black' : 'red'}]}>{
+                    product.inStock ? product.price : "SOLD OUT" }
+                </Text>
             </View>
         </View>
     )

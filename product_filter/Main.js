@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react'
 import { SafeAreaView, View, Text, StyleSheet, FlatList, Alert, TextInput } from 'react-native'
 import productData from './product_data.json'
 
-import {ProductCard} from './components/ProductCard'
+import {ProductCard} from './components/ProductCard';
+import {SearchBar} from './components/SearchBar';
 
 
 const App = () => {
@@ -13,12 +14,10 @@ const App = () => {
   const renderListItem = ({item}) => <ProductCard product = {item}/>
 
   useEffect(()=>{
-    // Alert.alert("Hosgeldiniz");
     setDisplayList(productData);
   },[])
 
   useEffect(()=>{
-    // Alert.alert("Hosgeldiniz");
     const filteredValue =  productData.filter(item=>{
       const text = searchValue.toUpperCase();
       const productTitle = item.title.toUpperCase();
@@ -31,13 +30,9 @@ const App = () => {
         <SafeAreaView>
             <View>
               <Text style={styles.banner}>ligthhouse.com</Text>
-              <View style={styles.searchBar}>
-                <TextInput placeholder="Search ..."
-                onChangeText={(value)=> setSearchValue(value)}
-                />
-              </View>
+              <SearchBar onChangeText = {value => setSearchValue(value)}/>
               <FlatList
-              keyExtractor={(_, index) => index.toString()}
+                keyExtractor={(_, index) => index.toString()}
                 data={displayList}
                 renderItem={renderListItem}
                 numColumns={2}
@@ -56,10 +51,4 @@ const styles = StyleSheet.create({
     fontSize:20,
     textAlign:'center'
   },
-  searchBar: {
-    backgroundColor: "#eceff1",
-    padding: 8,
-    margin: 15,
-    borderRadius: 10
-}
 })
