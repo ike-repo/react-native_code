@@ -4,7 +4,7 @@ import {View, TextInput, StyleSheet, onChangeText} from 'react-native';
 const SearchBar = (props) =>{
     return(
         <View style={styles.searchBar}>
-                <TextInput placeholder="Search sdfs..."
+                <TextInput placeholder="Search ..."
                 onChangeText={value => props.onChangeText(value)}
                 />
               </View>

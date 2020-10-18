@@ -7,12 +7,12 @@ const ProductCard = ({product}) =>{
         <View style={styles.container}>
             <Image
                 source = {{uri: product.imgURL}}
-                style={styles.image}/>
+                style={[styles.image,{opacity: product.inStock ? 1 : 0.2}]}/>
+                <Text style={{color: product.inStock ? 'black' : 'lightgray'}}>{product.title}</Text>
             <View style={styles.label}>
-                <Text>{product.title}</Text>
-                <Text 
-                    style={[styles.price, {color: product.inStock ? 'black' : 'red'}]}>{
-                    product.inStock ? product.price : "SOLD OUT" }
+                <Text style={[styles.price, {color: product.inStock ? 'black' : 'gray'}]}>{product.price}</Text>
+                <Text style={styles.soldout}>
+                {product.inStock ? undefined : "SOLD OUT"}
                 </Text>
             </View>
         </View>
@@ -33,15 +33,17 @@ const styles = StyleSheet.create({
     image: {
         height: Dimensions.get('window').height / 4,
         resizeMode: 'contain',
-
     },
     label:{
         flex:1,
-        justifyContent:'space-between'
+        flexDirection:'row',
+        justifyContent:'space-between',
     },
     price:{
-        fontSize: 18,
+        fontSize: 15,
         fontWeight: 'bold',
-        
+    },
+    soldout:{
+    color: 'red',
     }
 })
