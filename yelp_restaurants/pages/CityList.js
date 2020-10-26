@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import {SafeAreaView, View, Text} from 'react-native';
+import {SafeAreaView, View, Text, ActivityIndicator} from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
 import {CityItem, SearchBar} from '../components'
@@ -8,12 +8,15 @@ import {CityItem, SearchBar} from '../components'
 let originalList = [];
 
 const CityList = (props) =>{
+    const [isLoading, setLoading] = useState(false);
     const [cityList, setCityList] = useState([]);
  
     const fetchCityData = async () => {
+        setLoading(true);
         const {data} = await axios.get('http://opentable.herokuapp.com/api/cities');
         setCityList(data.cities);
         originalList = [...data.cities];
+        setLoading(false);
     }
 
     useEffect(()=>{
@@ -42,8 +45,15 @@ function searchCity(search) {
 }  
 
     return(
-        <SafeAreaView>
-            <View>
+        <SafeAreaView style={{flex:1}}>
+            <View style={{flex:1}}>
+                { isLoading ? 
+                <View style={{ flex:1, justifyContent: 'center', alignItems:'center'}}> 
+                    <ActivityIndicator size='large'/>
+                </View>
+                :
+                <CityItem item = {cityList}/>
+                }
                 <SearchBar 
                     placeholder = 'Search city ...'
                     onSearch={(value) => searchCity(value)}
