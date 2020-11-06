@@ -1,10 +1,15 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
+import {topicItem} from '../styles';
+
 const TopicItem = (props) => {
     return(
-        <TouchableOpacity>
-            <Text>{props.title}</Text>
+        <TouchableOpacity
+            style={[topicItem.container, {backgroundColor: `#${props.item.color}`}]}
+            onPress={props.onSelect}
+        >
+            <Text style={topicItem.text}>{props.item.name}</Text>
         </TouchableOpacity>
     )
 }

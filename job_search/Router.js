@@ -7,7 +7,7 @@ import {SavedJobs, Jobs, Introduction} from './pages'
 
 const Stack = createStackNavigator();
 
-function App() {
+function Router() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
@@ -21,4 +21,4 @@ function App() {
   );
 }
 
-export default App;
+export default Router;
