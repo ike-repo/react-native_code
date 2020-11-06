@@ -26,6 +26,7 @@ export const introduction = StyleSheet.create({
 })
 
 export const jobItem = StyleSheet.create({
+
     container:{
         padding:12,
         margin:7,
@@ -34,4 +35,17 @@ export const jobItem = StyleSheet.create({
     jobName:{
         fontWeight:'bold'
     },
+})
+
+export const jobs = StyleSheet.create({
+    modalBackground:{
+        backgroundColor:'white',
+        fontSize:20,
+        fontWeight:'bold',
+        borderRadius:5
+    },
+    jobTitle:{
+        fontWeight:'bold',
+        fontSize:20,
+    }
 })
